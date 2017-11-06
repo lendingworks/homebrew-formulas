@@ -25,10 +25,18 @@ class DockerCredentialEcrLogin < Formula
 
   def caveats
     <<-EOS.undent
-      Update the contents of your ~/.docker/config.json file to include:
+      Update the contents of your ~/.docker/config.json file to either include:
 
       {
         "credsStore": "ecr-login"
+      }
+
+      Or on a per-registry level, add:
+
+      {
+        "credHelpers": {
+          "aws_account_id.dkr.ecr.region.amazonaws.com": "ecr-login"
+        }
       }
     EOS
   end

@@ -1,5 +1,3 @@
-require 'pp'
-
 class Dgoss < Formula
   desc "Convenience wrapper for goss that simplifies Docker container testing"
   homepage "https://goss.rocks"
@@ -18,9 +16,8 @@ class Dgoss < Formula
       mv "goss-linux-amd64", "goss"
       lib.install "goss"
     }
-    pp "#{lib}"
 
-    # Update GOSS_PATH to point to the download goss binary.
+    # Update GOSS_PATH to point to the downloaded goss binary.
     inreplace "dgoss", /^GOSS_PATH=.*/, "GOSS_PATH=\"#{lib}/goss\""
 
     bin.install "dgoss"

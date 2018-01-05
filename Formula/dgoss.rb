@@ -20,6 +20,9 @@ class Dgoss < Formula
     # Update GOSS_PATH to point to the downloaded goss binary.
     inreplace "dgoss", /^GOSS_PATH=.*/, "GOSS_PATH=\"#{lib}/goss\""
 
+    # The 'mount' strategy won't work in MacOSX, default to 'copy'.
+    inreplace "dgoss", /GOSS_FILES_STRATEGY=.*/, "GOSS_FILES_STRATEGY=${GOSS_FILES_STRATEGY:=\"cp\"}"
+
     bin.install "dgoss"
   end
 
